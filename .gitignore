@@ -1,0 +1,6 @@
+site-packages/
+backend/.env
+backend/.venv/
+data/chroma/
+__pycache__/
+*.pyc

@@ -1,0 +1,182 @@
+[
+  {
+    "id": "play_store:sample001_0",
+    "text": "I love Spotify but discovering new music is really hard. The recommendations keep showing me the same artists and I never find anything fresh unless a friend sends me a link.",
+    "metadata": {
+      "source": "play_store",
+      "app_name": "Spotify",
+      "rating": 3,
+      "title": "",
+      "author": "user_a1b2c3d4",
+      "created_at": "2025-11-12T10:15:00",
+      "url": "https://play.google.com/store/apps/details?id=com.spotify.music",
+      "language": "en",
+      "sentiment": 0.15,
+      "segments": "[\"discovery-focused\"]",
+      "chunk_index": 0,
+      "parent_id": "play_store:sample001"
+    }
+  },
+  {
+    "id": "play_store:sample002_0",
+    "text": "Discover Weekly used to be amazing. Now it feels repetitive and the algorithm ignores what I skip. I want better discovery for indie and underground music.",
+    "metadata": {
+      "source": "play_store",
+      "app_name": "Spotify",
+      "rating": 2,
+      "title": "",
+      "author": "user_e5f6g7h8",
+      "created_at": "2025-12-01T14:22:00",
+      "url": "https://play.google.com/store/apps/details?id=com.spotify.music",
+      "language": "en",
+      "sentiment": -0.1,
+      "segments": "[\"discovery-focused\", \"frustrated-user\"]",
+      "chunk_index": 0,
+      "parent_id": "play_store:sample002"
+    }
+  },
+  {
+    "id": "play_store:sample003_0",
+    "text": "I mostly replay the same playlists when I study. I wish Spotify helped me branch out without ruining my focus playlists with random genres.",
+    "metadata": {
+      "source": "play_store",
+      "app_name": "Spotify",
+      "rating": 4,
+      "title": "",
+      "author": "user_i9j0k1l2",
+      "created_at": "2026-01-08T09:40:00",
+      "url": "https://play.google.com/store/apps/details?id=com.spotify.music",
+      "language": "en",
+      "sentiment": 0.25,
+      "segments": "[\"repeat-listening\"]",
+      "chunk_index": 0,
+      "parent_id": "play_store:sample003"
+    }
+  },
+  {
+    "id": "play_store:sample004_0",
+    "text": "Search is terrible for finding new songs. I type an mood or vibe and get popular hits I already know. Discovery feels broken compared to other apps.",
+    "metadata": {
+      "source": "play_store",
+      "app_name": "Spotify",
+      "rating": 2,
+      "title": "",
+      "author": "user_m3n4o5p6",
+      "created_at": "2026-02-14T18:05:00",
+      "url": "https://play.google.com/store/apps/details?id=com.spotify.music",
+      "language": "en",
+      "sentiment": -0.55,
+      "segments": "[\"discovery-focused\", \"frustrated-user\"]",
+      "chunk_index": 0,
+      "parent_id": "play_store:sample004"
+    }
+  },
+  {
+    "id": "play_store:sample005_0",
+    "text": "As a casual listener I just want a simple way to explore by genre and decade. The app pushes podcasts and the same top charts instead.",
+    "metadata": {
+      "source": "play_store",
+      "app_name": "Spotify",
+      "rating": 3,
+      "title": "",
+      "author": "user_q7r8s9t0",
+      "created_at": "2026-03-03T11:30:00",
+      "url": "https://play.google.com/store/apps/details?id=com.spotify.music",
+      "language": "en",
+      "sentiment": 0.0,
+      "segments": "[]",
+      "chunk_index": 0,
+      "parent_id": "play_store:sample005"
+    }
+  },
+  {
+    "id": "play_store:sample006_0",
+    "text": "Recommendations improved after I cleaned my liked songs, but new users must struggle because the app needs tons of data before it suggests anything good.",
+    "metadata": {
+      "source": "play_store",
+      "app_name": "Spotify",
+      "rating": 4,
+      "title": "",
+      "author": "user_u1v2w3x4",
+      "created_at": "2026-03-20T16:18:00",
+      "url": "https://play.google.com/store/apps/details?id=com.spotify.music",
+      "language": "en",
+      "sentiment": 0.25,
+      "segments": "[\"discovery-focused\"]",
+      "chunk_index": 0,
+      "parent_id": "play_store:sample006"
+    }
+  },
+  {
+    "id": "play_store:sample007_0",
+    "text": "I keep hearing the same songs on repeat in Daily Mix. Comfort listening is fine but I also want a dedicated discovery mode that never plays artists already in my library.",
+    "metadata": {
+      "source": "play_store",
+      "app_name": "Spotify",
+      "rating": 3,
+      "title": "",
+      "author": "user_y5z6a7b8",
+      "created_at": "2026-04-02T08:55:00",
+      "url": "https://play.google.com/store/apps/details?id=com.spotify.music",
+      "language": "en",
+      "sentiment": 0.0,
+      "segments": "[\"discovery-focused\", \"repeat-listening\"]",
+      "chunk_index": 0,
+      "parent_id": "play_store:sample007"
+    }
+  },
+  {
+    "id": "play_store:sample008_0",
+    "text": "Frustrated that shuffle and radio keep looping the same tracks. I am trying to find workout music I have never heard but the app keeps recycling hits.",
+    "metadata": {
+      "source": "play_store",
+      "app_name": "Spotify",
+      "rating": 1,
+      "title": "",
+      "author": "user_c9d0e1f2",
+      "created_at": "2026-04-18T20:12:00",
+      "url": "https://play.google.com/store/apps/details?id=com.spotify.music",
+      "language": "en",
+      "sentiment": -0.5,
+      "segments": "[\"frustrated-user\"]",
+      "chunk_index": 0,
+      "parent_id": "play_store:sample008"
+    }
+  },
+  {
+    "id": "play_store:sample009_0",
+    "text": "Release Radar is the only feature that consistently helps me discover new music from artists I follow. Everything else feels generic.",
+    "metadata": {
+      "source": "play_store",
+      "app_name": "Spotify",
+      "rating": 4,
+      "title": "",
+      "author": "user_g3h4i5j6",
+      "created_at": "2026-05-05T13:44:00",
+      "url": "https://play.google.com/store/apps/details?id=com.spotify.music",
+      "language": "en",
+      "sentiment": 0.25,
+      "segments": "[\"discovery-focused\"]",
+      "chunk_index": 0,
+      "parent_id": "play_store:sample009"
+    }
+  },
+  {
+    "id": "play_store:sample010_0",
+    "text": "Different family members on the same account get completely different recommendation quality. My teen discovers tons of music while I get stale playlists.",
+    "metadata": {
+      "source": "play_store",
+      "app_name": "Spotify",
+      "rating": 3,
+      "title": "",
+      "author": "user_k7l8m9n0",
+      "created_at": "2026-06-01T07:28:00",
+      "url": "https://play.google.com/store/apps/details?id=com.spotify.music",
+      "language": "en",
+      "sentiment": 0.0,
+      "segments": "[\"discovery-focused\"]",
+      "chunk_index": 0,
+      "parent_id": "play_store:sample010"
+    }
+  }
+]
