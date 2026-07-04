@@ -39,8 +39,7 @@ cd "$APP_DIR/backend"
 python3 -m venv .venv
 source .venv/bin/activate
 pip install --upgrade pip
-pip install torch --index-url https://download.pytorch.org/whl/cpu
-pip install -r requirements.txt
+pip install --no-cache-dir -r requirements-ec2.txt
 
 if [ ! -f .env ]; then
   echo "==> Creating .env from example — set OPENAI_API_KEY before use"

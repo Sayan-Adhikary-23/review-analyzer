@@ -47,7 +47,11 @@ class Settings(BaseSettings):
     reddit_include_comments: bool = True
     reddit_user_agent: str = "ReviewAnalyzer/1.0"
 
-    cors_origins: list[str] = ["http://localhost:8000", "http://127.0.0.1:8000"]
+    cors_origins: list[str] = [
+        "http://localhost:8000",
+        "http://127.0.0.1:8000",
+        "http://54.174.190.239:8000",
+    ]
 
 
 @lru_cache
