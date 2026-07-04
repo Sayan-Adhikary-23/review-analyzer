@@ -1,5 +1,6 @@
 import { submitQuery } from "./api.js";
 import { renderAnswer, renderCitations } from "./citations.js";
+import { loadHistory, saveHistoryEntry, renderHistoryPanel } from "./history.js";
 
 const SUGGESTED_PROMPTS = [
   "Why do users struggle to discover new music?",
@@ -14,9 +15,16 @@ const statusText = document.getElementById("status-text");
 const answerPanel = document.getElementById("answer-panel");
 const answerText = document.getElementById("answer-text");
 const answerMeta = document.getElementById("answer-meta");
+const evidenceSummary = document.getElementById("evidence-summary");
 const citationsPanel = document.getElementById("citations-panel");
 const citationsList = document.getElementById("citations-list");
 const suggestedPrompts = document.getElementById("suggested-prompts");
+const historyPanel = document.getElementById("history-panel");
+const historyPanelMobile = document.getElementById("history-panel-mobile");
+const historyDrawer = document.getElementById("history-drawer");
+const historyToggle = document.getElementById("history-toggle");
+const historyClose = document.getElementById("history-close");
+const historyBackdrop = document.getElementById("history-backdrop");
 
 function setStatus(message, isError = false) {
   statusText.textContent = message;
@@ -38,6 +46,46 @@ function renderSuggestedPrompts() {
   });
 }
 
+function displayResult(result) {
+  renderAnswer(
+    result.answer,
+    result.citations,
+    result.metadata,
+    answerText,
+    answerMeta,
+    evidenceSummary,
+    answerPanel,
+    citationsPanel
+  );
+  renderCitations(result.citations, citationsList);
+}
+
+function handleHistorySelect(item) {
+  questionEl.value = item.question;
+  displayResult({
+    answer: item.answer,
+    citations: item.citations || [],
+    metadata: item.metadata || { retrieved_count: 0, latency_ms: 0 },
+  });
+  closeHistoryDrawer();
+  answerPanel.scrollIntoView({ behavior: "smooth", block: "start" });
+}
+
+function refreshHistoryPanels() {
+  const history = loadHistory();
+  renderHistoryPanel(history, historyPanel, handleHistorySelect);
+  renderHistoryPanel(history, historyPanelMobile, handleHistorySelect);
+}
+
+function openHistoryDrawer() {
+  historyDrawer.classList.remove("hidden");
+  refreshHistoryPanels();
+}
+
+function closeHistoryDrawer() {
+  historyDrawer.classList.add("hidden");
+}
+
 async function handleAsk() {
   const question = questionEl.value.trim();
   if (!question) {
@@ -50,8 +98,14 @@ async function handleAsk() {
 
   try {
     const result = await submitQuery(question);
-    renderAnswer(result.answer, result.metadata, answerText, answerMeta, answerPanel, citationsPanel);
-    renderCitations(result.citations, citationsList);
+    displayResult(result);
+    saveHistoryEntry({
+      question,
+      answer: result.answer,
+      citations: result.citations,
+      metadata: result.metadata,
+    });
+    refreshHistoryPanels();
     setStatus("");
   } catch (error) {
     setStatus(error.message, true);
@@ -67,4 +121,9 @@ questionEl.addEventListener("keydown", (event) => {
   }
 });
 
+historyToggle?.addEventListener("click", openHistoryDrawer);
+historyClose?.addEventListener("click", closeHistoryDrawer);
+historyBackdrop?.addEventListener("click", closeHistoryDrawer);
+
 renderSuggestedPrompts();
+refreshHistoryPanels();

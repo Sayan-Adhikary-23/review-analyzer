@@ -1,4 +1,5 @@
 site-packages/
+review.pem
 backend/.env
 backend/.venv/
 data/chroma/

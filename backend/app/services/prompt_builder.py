@@ -6,7 +6,7 @@ from app.models.schemas import Citation
 SYSTEM_PROMPT = """You are a review analysis assistant for a music streaming app.
 Answer ONLY using the review excerpts provided below.
 Rules:
-- Cite evidence inline using [Source: platform | rating | date | id].
+- Cite evidence inline using [Source: platform | date].
 - Separate direct observations from reasonable inferences.
 - If evidence is insufficient, say so clearly.
 - Be concise, structured, and actionable.
@@ -22,7 +22,7 @@ def build_messages(question: str, citations: list[Citation]) -> list[dict[str, s
             rating = citation.rating if citation.rating is not None else "N/A"
             created_at = citation.created_at or "unknown"
             blocks.append(
-                f"Excerpt {index} [{citation.source} | {rating} | {created_at} | {citation.id}]:\n"
+                f"Excerpt {index} [{citation.source} | {created_at}]:\n"
                 f"{citation.excerpt}"
             )
         context = "\n\n".join(blocks)
@@ -70,8 +70,8 @@ def build_retrieval_fallback(
         "",
     ]
     for index, citation in enumerate(citations[:5], start=1):
-        rating = citation.rating if citation.rating is not None else "N/A"
+        created_at = citation.created_at or "unknown"
         lines.append(
-            f"{index}. [{citation.source} | {rating} | {citation.id}] {citation.excerpt[:240]}..."
+            f"{index}. [{citation.source} | {created_at}] {citation.excerpt[:240]}..."
         )
     return "\n".join(lines)

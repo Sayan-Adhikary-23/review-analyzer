@@ -7,6 +7,9 @@ const SOURCE_LABELS = {
 const CITATION_PATTERN =
   /\[(?:Source:\s*)?([a-z_]+)\s*\|\s*([^|\]]+?)(?:\s*\|\s*([^|\]]+?))?(?:\s*\|\s*[^\]]+)?\]/gi;
 
+const SIMPLE_CITATION_PATTERN =
+  /\[(?:Source:\s*)?([a-z_]+)\s*\|\s*([^\]|]+?)\]/gi;
+
 function escapeHtml(text) {
   const div = document.createElement("div");
   div.textContent = text;
@@ -34,8 +37,10 @@ function isRating(value) {
 }
 
 function buildEvidenceBadge(platform, date) {
-  const datePart = date ? ` · ${date}` : "";
-  return `<span class="inline-flex items-center gap-1 mx-0.5 px-2 py-0.5 rounded-md bg-indigo-100 text-indigo-800 text-xs font-medium border border-indigo-200">${escapeHtml(platform)}${datePart ? `<span class="text-indigo-600 font-normal">${escapeHtml(date)}</span>` : ""}</span>`;
+  const dateHtml = date
+    ? ` <span class="text-indigo-600 font-normal">· ${escapeHtml(date)}</span>`
+    : "";
+  return `<span class="inline-flex items-center mx-0.5 px-2 py-0.5 rounded-md bg-indigo-100 text-indigo-800 text-xs font-medium border border-indigo-200">${escapeHtml(platform)}${dateHtml}</span>`;
 }
 
 function parseCitationParts(platform, part2, part3) {
@@ -49,10 +54,17 @@ function parseCitationParts(platform, part2, part3) {
 }
 
 export function formatAnswerWithEvidence(answer) {
-  return escapeHtml(answer).replace(CITATION_PATTERN, (match, platform, part2, part3) => {
+  let formatted = escapeHtml(answer);
+  formatted = formatted.replace(CITATION_PATTERN, (match, platform, part2, part3) => {
     const { platform: label, date } = parseCitationParts(platform, part2, part3);
     return buildEvidenceBadge(label, date);
   });
+  formatted = formatted.replace(SIMPLE_CITATION_PATTERN, (match, platform, dateRaw) => {
+    if (match.includes('bg-indigo-100')) return match;
+    const date = isRating(dateRaw) ? null : formatDate(dateRaw.trim());
+    return buildEvidenceBadge(platformLabel(platform.trim()), date);
+  });
+  return formatted;
 }
 
 export function renderEvidenceSummary(citations, container) {
