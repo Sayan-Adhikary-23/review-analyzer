@@ -6,10 +6,11 @@ REPO_URL="https://github.com/Sayan-Adhikary-23/review-analyzer.git"
 SERVICE_NAME="review-analyzer"
 
 echo "==> Installing system packages"
-sudo yum update -y || sudo apt-get update -y
 if command -v yum &>/dev/null; then
+  sudo yum update -y
   sudo yum install -y python3 python3-pip git
-else
+elif command -v apt-get &>/dev/null; then
+  sudo apt-get update -y
   sudo apt-get install -y python3 python3-pip python3-venv git
 fi
 
