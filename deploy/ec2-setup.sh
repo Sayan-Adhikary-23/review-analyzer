@@ -36,6 +36,8 @@ fi
 
 echo "==> Setting up Python virtual environment"
 cd "$APP_DIR/backend"
+mkdir -p "$APP_DIR/tmp"
+export TMPDIR="$APP_DIR/tmp"
 python3 -m venv .venv
 source .venv/bin/activate
 pip install --upgrade pip
